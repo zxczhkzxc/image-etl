@@ -77,6 +77,7 @@ def get_all_annotations(generator):
             annotations = all_annotations[i][label]
             num_annotations += annotations.shape[0]
             # print("num_annotations",num_annotations)
+        print("num_annotations", num_annotations)
         annotations[label] = num_annotations
     return annotations
 
