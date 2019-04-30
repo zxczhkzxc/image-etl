@@ -29,29 +29,40 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
+# voc_classes = {
+#     'aeroplane'   : 0,
+#     'bicycle'     : 1,
+#     'bird'        : 2,
+#     'boat'        : 3,
+#     'bottle'      : 4,
+#     'bus'         : 5,
+#     'car'         : 6,
+#     'cat'         : 7,
+#     'chair'       : 8,
+#     'cow'         : 9,
+#     'diningtable' : 10,
+#     'dog'         : 11,
+#     'horse'       : 12,
+#     'motorbike'   : 13,
+#     'person'      : 14,
+#     'pottedplant' : 15,
+#     'sheep'       : 16,
+#     'sofa'        : 17,
+#     'train'       : 18,
+#     'tvmonitor'   : 19
+# }
 voc_classes = {
-    'aeroplane'   : 0,
-    'bicycle'     : 1,
-    'bird'        : 2,
-    'boat'        : 3,
-    'bottle'      : 4,
-    'bus'         : 5,
-    'car'         : 6,
-    'cat'         : 7,
-    'chair'       : 8,
-    'cow'         : 9,
-    'diningtable' : 10,
-    'dog'         : 11,
-    'horse'       : 12,
-    'motorbike'   : 13,
-    'person'      : 14,
-    'pottedplant' : 15,
-    'sheep'       : 16,
-    'sofa'        : 17,
-    'train'       : 18,
-    'tvmonitor'   : 19
+    'rider_chongfengyi_2018'   : 0,
+    'rider_chongfengyind_2018'     : 1,
+    'rider_majia_2018'        : 2,
+    'rider_txue_2018'        : 3,
+    'rider_box_2018'      : 4,
+    'rider_boxwithele_2018'         : 5,
+    'rider_txuewithele_2018'         : 6,
+    'rider_toukui_2018'         : 7,
+    'rider_policemajia_2018'       : 8,
+    'rider_chongfengyiND_2018'     :9
 }
-
 
 def _findNode(parent, name, debug_name=None, parse=None):
     if debug_name is None:
@@ -79,7 +90,8 @@ class PascalVocGenerator(Generator):
         data_dir,
         set_name,
         classes=voc_classes,
-        image_extension='.jpg',
+        # image_extension='.jpg',
+        image_extension='.png',
         skip_truncated=False,
         skip_difficult=False,
         **kwargs
