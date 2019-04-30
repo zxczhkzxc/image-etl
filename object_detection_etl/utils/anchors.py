@@ -15,13 +15,13 @@ limitations under the License.
 """
 
 import numpy as np
-# import keras
-import pyximport
-
-pyximport.install()
-import sys
-sys.path.append("..")
-from utils.compute_overlap import compute_overlap
+import keras
+# import pyximport
+#
+# pyximport.install()
+# import sys
+# sys.path.append("..")
+# from utils.compute_overlap import compute_overlap
 
 
 class AnchorParameters:

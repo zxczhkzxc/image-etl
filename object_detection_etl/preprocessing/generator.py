@@ -21,11 +21,11 @@ import warnings
 import keras
 import sys
 sys.path.append("..")
-from utils.anchors import (
-    anchor_targets_bbox,
-    anchors_for_shape,
-    guess_shapes
-)
+# from utils.anchors import (
+#     anchor_targets_bbox,
+#     anchors_for_shape,
+#     guess_shapes
+# )
 from utils.config import parse_anchor_parameters
 from utils.image import (
     TransformParameters,
@@ -50,8 +50,8 @@ class Generator(keras.utils.Sequence):
         image_min_side=800,
         image_max_side=1333,
         transform_parameters=None,
-        compute_anchor_targets=anchor_targets_bbox,
-        compute_shapes=guess_shapes,
+        # compute_anchor_targets=anchor_targets_bbox,
+        # compute_shapes=guess_shapes,
         preprocess_image=preprocess_image,
         config=None
     ):
@@ -76,8 +76,8 @@ class Generator(keras.utils.Sequence):
         self.image_min_side         = image_min_side
         self.image_max_side         = image_max_side
         self.transform_parameters   = transform_parameters or TransformParameters()
-        self.compute_anchor_targets = compute_anchor_targets
-        self.compute_shapes         = compute_shapes
+        # self.compute_anchor_targets = compute_anchor_targets
+        # self.compute_shapes         = compute_shapes
         self.preprocess_image       = preprocess_image
         self.config                 = config
 
@@ -274,11 +274,11 @@ class Generator(keras.utils.Sequence):
 
         return image_batch
 
-    def generate_anchors(self, image_shape):
-        anchor_params = None
-        if self.config and 'anchor_parameters' in self.config:
-            anchor_params = parse_anchor_parameters(self.config)
-        return anchors_for_shape(image_shape, anchor_params=anchor_params, shapes_callback=self.compute_shapes)
+    # def generate_anchors(self, image_shape):
+    #     anchor_params = None
+    #     if self.config and 'anchor_parameters' in self.config:
+    #         anchor_params = parse_anchor_parameters(self.config)
+    #     return anchors_for_shape(image_shape, anchor_params=anchor_params, shapes_callback=self.compute_shapes)
 
     def compute_targets(self, image_group, annotations_group):
         """ Compute target outputs for the network using images and their annotations.
