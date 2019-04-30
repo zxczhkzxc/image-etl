@@ -26,8 +26,8 @@ from utils.anchors import (
     anchors_for_shape,
     guess_shapes
 )
-from ..utils.config import parse_anchor_parameters
-from ..utils.image import (
+from utils.config import parse_anchor_parameters
+from utils.image import (
     TransformParameters,
     adjust_transform_for_image,
     apply_transform,
