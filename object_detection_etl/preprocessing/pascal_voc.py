@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from ..preprocessing.generator import Generator
-from ..utils.image import read_image_bgr
+from .generator import Generator
+import sys
+sys.path.append("..")
+from utils.image import read_image_bgr
 
 import os
 import numpy as np

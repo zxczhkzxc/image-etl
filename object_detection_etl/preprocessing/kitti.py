@@ -21,6 +21,8 @@ import numpy as np
 from PIL import Image
 
 from .generator import Generator
+import sys
+sys.path.append("..")
 from ..utils.image import read_image_bgr
 
 kitti_classes = {

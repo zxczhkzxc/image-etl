@@ -23,7 +23,9 @@ import numpy as np
 from PIL import Image
 
 from .generator import Generator
-from ..utils.image import read_image_bgr
+import sys
+sys.path.append("..")
+from utils.image import read_image_bgr
 
 
 def load_hierarchy(metadata_dir, version='v4'):
