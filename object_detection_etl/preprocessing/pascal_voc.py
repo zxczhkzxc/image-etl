@@ -102,7 +102,9 @@ class PascalVocGenerator(Generator):
             base_dir: Directory w.r.t. where the files are to be searched (defaults to the directory containing the csv_data_file).
             csv_class_file: Path to the CSV classes file.
         """
+
         self.data_dir             = data_dir
+        print("self.data_dir", self.data_dir)
         self.set_name             = set_name
         self.classes              = classes
         self.image_names          = [l.strip().split(None, 1)[0] for l in open(os.path.join(data_dir, 'ImageSets', 'Main', set_name + '.txt')).readlines()]
