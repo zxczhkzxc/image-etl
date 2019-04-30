@@ -19,7 +19,8 @@ import random
 import warnings
 
 import keras
-
+import sys
+sys.path.append("..")
 from ..utils.anchors import (
     anchor_targets_bbox,
     anchors_for_shape,
