@@ -16,6 +16,9 @@ limitations under the License.
 
 import numpy as np
 import keras
+import pyximport
+
+pyximport.install()
 from compute_overlap import compute_overlap
 
 
