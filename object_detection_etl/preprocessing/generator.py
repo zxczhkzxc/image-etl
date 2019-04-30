@@ -34,7 +34,7 @@ from utils.image import (
     preprocess_image,
     resize_image,
 )
-from ..utils.transform import transform_aabb
+from utils.transform import transform_aabb
 
 
 class Generator(keras.utils.Sequence):
