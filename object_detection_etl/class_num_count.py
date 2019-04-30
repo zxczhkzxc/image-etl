@@ -24,7 +24,8 @@ if __name__ == "__main__" and __package__ is None:
 # from .. import models
 from preprocessing.csv_generator import CSVGenerator
 from preprocessing.pascal_voc import PascalVocGenerator
-from utils.config import read_config_file, parse_anchor_parameters
+# from utils.config import read_config_file, parse_anchor_parameters
+from utils.config import read_config_file
 # from ..utils.eval import evaluate
 from utils.keras_version import check_keras_version
 
