@@ -109,6 +109,7 @@ class PascalVocGenerator(Generator):
         self.image_extension      = image_extension
         self.skip_truncated       = skip_truncated
         self.skip_difficult       = skip_difficult
+        print("self.data_dir",self.data_dir)
 
         self.labels = {}
         for key, value in self.classes.items():
