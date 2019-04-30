@@ -67,13 +67,16 @@ def get_all_annotations(generator):
     num_annotations = 0.0
     all_annotations = _get_annotations(generator)
     annotations = {}
+    print("generator.size()",generator.size())
     for label in range(generator.num_classes()):
         if not generator.has_label(label):
             continue
+        print("label",label)
         for i in range(generator.size()):
             # detections = all_detections[i][label]
             annotations = all_annotations[i][label]
             num_annotations += annotations.shape[0]
+            print("num_annotations",num_annotations)
         annotations[label] = num_annotations
     return annotations
 
