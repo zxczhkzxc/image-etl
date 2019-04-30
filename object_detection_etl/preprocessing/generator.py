@@ -26,7 +26,7 @@ sys.path.append("..")
 #     anchors_for_shape,
 #     guess_shapes
 # )
-from utils.config import parse_anchor_parameters
+# from utils.config import parse_anchor_parameters
 from utils.image import (
     TransformParameters,
     adjust_transform_for_image,
