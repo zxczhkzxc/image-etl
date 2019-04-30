@@ -68,6 +68,7 @@ def get_all_annotations(generator):
     all_annotations = _get_annotations(generator)
     annotations = {}
     print("generator.size()",generator.size())
+    print("generator.num_classes()",generator.num_classes())
     for label in range(generator.num_classes()):
         if not generator.has_label(label):
             continue
@@ -135,8 +136,10 @@ def parse_args(args):
                                ,default='/home/bigdatapro/zhk/rider_box_detector2/data/VOCdevkit2007/VOC2007')
 
     csv_parser = subparsers.add_parser('csv')
-    csv_parser.add_argument('annotations=', help='Path to CSV file containing annotations for evaluation.')
-    csv_parser.add_argument('classes=', help='Path to a CSV file containing class label mapping.')
+    csv_parser.add_argument('-annotations', help='Path to CSV file containing annotations for evaluation.'
+                            , default='/data1/rider_equip_samples/CSV/val_annotations.csv')
+    csv_parser.add_argument('-classes', help='Path to a CSV file containing class label mapping.'
+                            , default='/data1/rider_equip_samples/CSV/classes.csv')
     # parser.add_argument('--pascal_path', help='Path to dataset directory (ie. /tmp/VOCdevkit).')
     parser.add_argument('--model',              help='Path to RetinaNet model.')
     parser.add_argument('--convert-model',    help='Convert the model to an inference model (ie. the input is a training model).', action='store_true')
