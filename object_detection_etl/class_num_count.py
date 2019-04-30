@@ -80,6 +80,9 @@ def get_all_annotations(generator):
             num_annotations += annotations.shape[0]
             # print("num_annotations",num_annotations)
         print("num_annotations", num_annotations)
+        if num_annotations == 0:
+            annotations[label] = 0
+            continue
         annotations[label] = num_annotations
     return annotations
 
