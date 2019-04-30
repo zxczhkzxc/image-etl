@@ -86,6 +86,8 @@ def get_all_annotations(generator):
         print(label,num_annotations)
         annotations[label] = num_annotations
         print(label,"---end--")
+        print("annotations",annotations)
+    print("annotations", annotations)
     return annotations
 
 
