@@ -60,7 +60,8 @@ voc_classes = {
     'rider_boxwithele_2018'         : 5,
     'rider_txuewithele_2018'         : 6,
     'rider_toukui_2018'         : 7,
-    'rider_policemajia_2018'       : 8
+    'rider_policemajia_2018'       : 8,
+    'rider_chongfengyiND_2018'       : 9
 }
 
 def _findNode(parent, name, debug_name=None, parse=None):
