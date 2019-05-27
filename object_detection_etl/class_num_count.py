@@ -27,7 +27,7 @@ from preprocessing.pascal_voc import PascalVocGenerator
 # from utils.config import read_config_file, parse_anchor_parameters
 from utils.config import read_config_file
 # from ..utils.eval import evaluate
-from utils.keras_version import check_keras_version
+# from utils.keras_version import check_keras_version
 
 import progressbar
 assert(callable(progressbar.progressbar)), "Using wrong progressbar module, install 'progressbar2' instead."
@@ -168,12 +168,12 @@ def main(args=None):
     args = parse_args(args)
 
     # make sure keras is the minimum required version
-    check_keras_version()
+    # check_keras_version()
 
     # optionally choose specific GPU
     if args.gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
-    keras.backend.tensorflow_backend.set_session(get_session())
+    # keras.backend.tensorflow_backend.set_session(get_session())
 
     # make save path if it doesn't exist
     if args.save_path is not None and not os.path.exists(args.save_path):
