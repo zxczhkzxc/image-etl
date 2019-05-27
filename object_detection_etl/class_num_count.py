@@ -5,7 +5,8 @@
 @Author : zhanghongke
 @Email : zhanghongke@dianwoda.com
 @File : class_num_count.py
-@Desc: 
+@Desc:
+python class_num_count.py pascal  -pascal_path ***/VOC2007
 '''
 import argparse
 import os
