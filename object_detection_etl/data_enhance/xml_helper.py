@@ -1,6 +1,7 @@
 # -*- coding=utf-8 -*-
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as DOC
+import os
 
 # 从xml文件中提取bounding box信息, 格式为[[x_min, y_min, x_max, y_max, name]]
 def parse_xml(xml_path):
@@ -56,10 +57,10 @@ def generate_xml(img_name,coords,img_size,out_root_path):
     title.appendChild(title_text)
     source.appendChild(title)
 
-    title = doc.createElement('annotation')
-    title_text = doc.createTextNode('Tianchi')
-    title.appendChild(title_text)
-    source.appendChild(title)
+    # title = doc.createElement('annotation')
+    # title_text = doc.createTextNode('Tianchi')
+    # title.appendChild(title_text)
+    # source.appendChild(title)
 
     size = doc.createElement('size')
     annotation.appendChild(size)
@@ -93,7 +94,7 @@ def generate_xml(img_name,coords,img_size,out_root_path):
         pose.appendChild(doc.createTextNode('Unspecified'))
         object.appendChild(pose)
         truncated = doc.createElement('truncated')
-        truncated.appendChild(doc.createTextNode('1'))
+        truncated.appendChild(doc.createTextNode('0'))
         object.appendChild(truncated)
         difficult = doc.createElement('difficult')
         difficult.appendChild(doc.createTextNode('0'))
@@ -119,6 +120,6 @@ def generate_xml(img_name,coords,img_size,out_root_path):
         bndbox.appendChild(title)
 
     # 将DOM对象doc写入文件
-    f = open(os.path.join(out_root_path, img_name[:-4]+'.xml'),'w')
+    f = open(os.path.join(out_root_path, img_name[:-4]+"new"+'.xml'),'w')
     f.write(doc.toprettyxml(indent = ''))
     f.close()

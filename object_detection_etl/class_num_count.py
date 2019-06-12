@@ -12,8 +12,8 @@ import argparse
 import os
 import sys
 
-import keras
-import tensorflow as tf
+# import keras
+# import tensorflow as tf
 
 # Allow relative imports when being executed as script.
 if __name__ == "__main__" and __package__ is None:
@@ -32,12 +32,12 @@ from utils.config import read_config_file
 
 import progressbar
 assert(callable(progressbar.progressbar)), "Using wrong progressbar module, install 'progressbar2' instead."
-def get_session():
-    """ Construct a modified tf session.
-    """
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth = True
-    return tf.Session(config=config)
+# def get_session():
+#     """ Construct a modified tf session.
+#     """
+#     config = tf.ConfigProto()
+#     config.gpu_options.allow_growth = True
+#     return tf.Session(config=config)
 
 def _get_annotations(generator):
     """ Get the ground truth annotations from the generator.

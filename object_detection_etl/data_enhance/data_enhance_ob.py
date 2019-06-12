@@ -438,30 +438,11 @@ def parse_args():
     return args
 
 
-def GenerateXml():
-    import xml.dom.minidom
-    impl = xml.dom.minidom.getDOMImplementation()
-    dom = impl.createDocument(None, 'employees', None)
-    root = dom.documentElement
-    employee = dom.createElement('employee')
-    employee.setAttribute('id', 1)  ##原文中没有这一点，可能是遗漏了，经过实践，自己加上了
-    root.appendChild(employee)
 
-    nameE = dom.createElement('name')
-    nameT = dom.createTextNode('linux')
-    nameE.appendChild(nameT)
-    employee.appendChild(nameE)
-
-    ageE = dom.createElement('age')
-    ageT = dom.createTextNode('30')
-    ageE.appendChild(ageT)
-    employee.appendChild(ageE)
-
-    f = open('employees2.xml', 'w', encoding='utf-8')
-    dom.writexml(f, addindent='  ', newl='\n', encoding='utf-8')
-    f.close()
-
-
+ALLOWED_EXTENSIONS = set([ 'png', 'jpg', 'jpeg', 'gif'])
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 if __name__ == '__main__':
 
     ### test ###
@@ -477,24 +458,51 @@ if __name__ == '__main__':
     # # source_pic_root_path = './data_split'
     # # source_xml_root_path = './data_voc/VOC2007/Annotations'
     # source_xml_root_path = args.xmldir
-    source_pic_root_path = "C:/Users/Administrator/Desktop/test_enhance"
+    source_pic_root_path = "C:/Users/Administrator/Desktop/test_enhance_pic"
     source_xml_root_path = "C:/Users/Administrator/Desktop/test_enhance"
 
     for parent, _, files in os.walk(source_pic_root_path):
         for file in files:
             cnt = 0
+            if not allowed_file(file):
+                break
             while cnt < need_aug_num:
                 pic_path = os.path.join(parent, file)
                 xml_path = os.path.join(source_xml_root_path, file[:-4] + '.xml')
+                print("file--", file)
+                print("pic_path", pic_path)
                 print("xml_path",xml_path)
                 coords = parse_xml(xml_path)  # 解析得到box信息，格式为[[x_min,y_min,x_max,y_max,name]]
+                print("coords000000",coords)
+                classes = [coord[4:5] for coord in coords]
                 coords = [coord[:4] for coord in coords]
 
                 img = cv2.imread(pic_path)
+
+
                 show_pic(img, coords)  # 原图
                 print("coords",coords)
+                print("classes",classes)
                 auged_img, auged_bboxes = dataAug.dataAugment(img, coords)
                 cnt += 1
 
                 show_pic(auged_img, auged_bboxes)  # 强化后的图
                 print("auged_bboxes",auged_bboxes)
+                w = img.shape[1]
+                h = img.shape[0]
+                h, w, c= img.shape
+                print(h, w, c)
+                new_coords=list()
+                for i in range(len(classes)):
+                    print(i, "----------", auged_bboxes[i], classes[i])
+                    print(i,"----------",type(auged_bboxes[i]),type(classes[i]))
+                    print(auged_bboxes[i]+classes[i])
+                    new_coords.append(auged_bboxes[i]+(classes[i]))
+                print("new_list",new_coords)
+                # def generate_xml(img_name, coords, img_size, out_root_path):
+                img_name=file
+                img_size=[h, w, c]
+                out_root_path=source_xml_root_path
+                generate_xml(img_name, new_coords, img_size, out_root_path)
+                new_pic_path=os.path.join(parent, img_name[:-4] + "new" + '.png')
+                cv2.imwrite(new_pic_path, auged_img)
