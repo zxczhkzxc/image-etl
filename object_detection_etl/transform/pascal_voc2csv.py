@@ -4,7 +4,9 @@ import csv
 import os
 import glob
 import sys
-
+'''
+python2 使用
+'''
 class PascalVOC2CSV(object):
     def __init__(self,xml=[], ann_path='./annotations.csv',classes_path='./classes.csv'):
         '''
@@ -57,7 +59,8 @@ class PascalVOC2CSV(object):
         sys.stdout.flush()
 
     def write_file(self,):
-        with open(self.ann_path, 'w', newline='') as fp:
+        # with open(self.ann_path, 'w', newline='') as fp:
+        with open(self.ann_path, 'wb') as fp:
             csv_writer = csv.writer(fp, dialect='excel')
             csv_writer.writerows(self.annotations)
 
@@ -65,7 +68,8 @@ class PascalVOC2CSV(object):
         class_=[]
         for num,name in enumerate(class_name):
             class_.append([name,num])
-        with open(self.classes_path, 'w', newline='') as fp:
+        # with open(self.classes_path, 'w', newline='') as fp:
+        with open(self.classes_path, 'wb') as fp:
             csv_writer = csv.writer(fp, dialect='excel')
             csv_writer.writerows(class_)
 
